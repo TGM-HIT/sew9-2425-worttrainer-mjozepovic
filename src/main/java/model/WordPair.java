@@ -1,3 +1,5 @@
+package model;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -5,7 +7,6 @@ public class WordPair {
 
     private String word;
     private String image;
-
 
     public WordPair(String word, String image) throws MalformedURLException {
 
@@ -44,7 +45,6 @@ public class WordPair {
         } else {
             throw new MalformedURLException("Ungültige URL");
         }
-
 
 
     }
