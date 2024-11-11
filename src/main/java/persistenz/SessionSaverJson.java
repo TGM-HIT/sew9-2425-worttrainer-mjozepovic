@@ -18,14 +18,14 @@ public class SessionSaverJson implements SessionSaver {
     public void save(WordCoach wordCoach) throws IOException {
 
         objectMapper.writerWithDefaultPrettyPrinter().writeValue(new File(FILE_PATH), wordCoach);
-        System.out.println("WortTrainer wurde als JSON gespeichert.");
+        System.out.println("WordCoach was saved as JSON.");
     }
 
     @Override
     public WordCoach load() throws IOException, ClassNotFoundException {
 
         WordCoach wordCoach = objectMapper.readValue(new File(FILE_PATH), WordCoach.class);
-        System.out.println("WortTrainer wurde erfolgreich aus JSON geladen.");
+        System.out.println("WordCoach was successfully loaded from the JSON.");
         return wordCoach;
     }
 }

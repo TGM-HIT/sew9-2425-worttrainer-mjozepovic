@@ -18,23 +18,24 @@ public class WordCoach {
         this.currentWordPairIndex = -1;
     }
 
-    public void chooseCurrentWordPair(int index) {
-        if (index < 0 || index >= wordPairs.size()) {
-            throw new IndexOutOfBoundsException("Ungültiger Index: " + index);
-        }
-        this.currentWordPairIndex = index;
-    }
-
     public void chooseCurrentWordPair() {
         if (!wordPairs.isEmpty()) {
             this.currentWordPairIndex = ((int) (Math.random() * wordPairs.size()));
         }
     }
 
+    public void chooseCurrentWordPair(int index) {
+        if (index < 0 || index >= wordPairs.size()) {
+            throw new IndexOutOfBoundsException("Angegebener Index liegt außerhalb der Grenzen, Index: " + index);
+        } else {
+            this.currentWordPairIndex = index;
+        }
+    }
 
     public boolean checkWordPair(String guessedWord) {
 
         if(this.wordPairs.get(currentWordPairIndex).getWord().equalsIgnoreCase(guessedWord)) {
+            //this.wordPairs.remove(currentWordPairIndex);
             chooseCurrentWordPair();
             this.right++;
             this.total++;
@@ -45,22 +46,22 @@ public class WordCoach {
         }
     }
 
-
     public void addWordPair(WordPair wordPair) {
         this.wordPairs.add(wordPair);
     }
 
 
-    public int getCurrentWordPairIndex() {
-        return currentWordPairIndex;
+
+    public void setWordPairs(ArrayList<WordPair> wordPairs) {
+        this.wordPairs = wordPairs;
     }
 
     public ArrayList<WordPair> getWordPairs() {
         return wordPairs;
     }
 
-    public void setWordPairs(ArrayList<WordPair> wordPairs) {
-        this.wordPairs = wordPairs;
+    public int getCurrentWordPairIndex() {
+        return currentWordPairIndex;
     }
 
     public void setCurrentWordPairIndex(int currentWordPairIndex) {

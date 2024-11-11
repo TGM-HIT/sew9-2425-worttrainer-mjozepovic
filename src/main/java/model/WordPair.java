@@ -1,22 +1,44 @@
 package model;
 
 import java.net.MalformedURLException;
-import java.net.URL;
+import java.net.URI;
+import java.net.URISyntaxException;
+
 
 public class WordPair {
 
     private String word;
     private String image;
 
-    public WordPair(String word, String image) throws MalformedURLException {
 
-        if (isValidImage(image)) {
-            this.word = word;
-            this.image = image;
-        } else {
-            throw new MalformedURLException("Ungültige URL");
+    public WordPair() {
+    }
+
+    public WordPair(String word, String image) throws URISyntaxException {
+        setWord(word);
+        setImage(image);
+    }
+
+
+
+    public String getImage() {
+        return this.image;
+    }
+
+    public void setImage(String image) throws URISyntaxException {
+        if (image == null || image.isEmpty()) {
+            throw new IllegalArgumentException("Image cannot be empty.");
         }
 
+        try {
+            URI uri = new URI(image);
+            if (!uri.isAbsolute() || (!uri.getScheme().equals("http") && !uri.getScheme().equals("https"))) {
+                throw new URISyntaxException(image, "URL must start with http or https.");
+            }
+            this.image = image;
+        } catch (URISyntaxException e) {
+            throw new URISyntaxException("Invalid URL: " + image, e.getMessage());
+        }
     }
 
 
@@ -25,27 +47,9 @@ public class WordPair {
     }
 
     public void setWord(String word) {
-        this.word = word;
-    }
-
-
-    public boolean isValidImage(String image) {
-        return true;
-    }
-
-
-    public String getImage() {
-        return this.image;
-    }
-
-    public void setImage(String image) throws MalformedURLException {
-
-        if (isValidImage(image)) {
-            this.image = image;
-        } else {
-            throw new MalformedURLException("Ungültige URL");
+        if (word == null || word.isEmpty()) {
+            throw new IllegalArgumentException("Word cannot be empty.");
         }
-
-
+        this.word = word;
     }
 }
