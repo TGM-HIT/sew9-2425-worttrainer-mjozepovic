@@ -1,7 +1,7 @@
 {
   "right" : 0,
   "total" : 0,
-  "currentWordPairIndex" : -1,
+  "currentWordPairIndex" : 0,
   "wordPairs" : [ {
     "word" : "Dog",
     "image" : "https://example.com/dog.jpg"

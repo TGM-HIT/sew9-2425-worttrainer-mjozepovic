@@ -6,8 +6,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 import java.io.IOException;
 
+
+/**
+ * @author Matteo Jozepovic
+ * @version 2024-11-16
+ * This class makes the saving and loading of data in the WordCoach application possible.
+ */
 public class SessionSaverJson implements SessionSaver {
-    private static final String FILE_PATH = "/Users/matteojozepovic/Documents/Schule/SEW/Worttrainer/src/main/resources/wordcoach.json";
+    private static final String FILE_PATH = "src/main/resources/wordcoach.json";
     private ObjectMapper objectMapper;
 
     public SessionSaverJson() {

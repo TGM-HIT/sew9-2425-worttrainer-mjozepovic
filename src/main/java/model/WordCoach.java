@@ -4,6 +4,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.ArrayList;
 
+/**
+ * @author Matteo Jozepovic
+ * @version 2024-11-16
+ * This class is the main part of the application. It represents the WordCoach itself and its functionality.
+ */
 public class WordCoach {
 
     private int right;
@@ -15,7 +20,7 @@ public class WordCoach {
 
     public WordCoach() {
         this.wordPairs = new ArrayList<>();
-        this.currentWordPairIndex = -1;
+        chooseCurrentWordPair();
     }
 
     public void chooseCurrentWordPair() {
@@ -50,8 +55,6 @@ public class WordCoach {
         this.wordPairs.add(wordPair);
     }
 
-
-
     public void setWordPairs(ArrayList<WordPair> wordPairs) {
         this.wordPairs = wordPairs;
     }
@@ -84,4 +87,20 @@ public class WordCoach {
         this.total = total;
     }
 
+
+    @JsonIgnore
+    public String getImage() {
+        if (wordPairs.isEmpty()) {
+            return null;
+        }
+        return wordPairs.get(currentWordPairIndex).getImage();
+    }
+
+    @JsonIgnore
+    public String getWord() {
+        if (wordPairs.isEmpty()) {
+            return null;
+        }
+        return wordPairs.get(currentWordPairIndex).getWord();
+    }
 }

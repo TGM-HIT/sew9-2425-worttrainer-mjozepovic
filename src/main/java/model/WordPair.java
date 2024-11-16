@@ -4,7 +4,11 @@ import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-
+/**
+ * @author Matteo Jozepovic
+ * @version 2024-11-16
+ * This class represents a WordPair in the WordCoach application.
+ */
 public class WordPair {
 
     private String word;
